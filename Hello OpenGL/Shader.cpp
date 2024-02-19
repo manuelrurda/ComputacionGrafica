@@ -29,10 +29,8 @@ void Shader::CreateFromFiles(const char* vertexLocation, const char* fragmentLoc
 std::string Shader::ReadFile(const char* fileLocation)
 {
     std::string content;
-//    const char* test = "shaders/test.rtf";
     
     std::ifstream fileStream(fileLocation, std::ios::in);
-//    std::ifstream fileStream(test, std::ios::in);
     if (!fileStream.is_open())
     {
         printf("Falló en leer el archivo: %s", fileLocation);
@@ -73,6 +71,7 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
         return;
     }
     
+    // Sin estas 3 líneas no ejecuta 
     GLuint vao;
     glGenVertexArrays(1, &vao); // Generate a VAO
     glBindVertexArray(vao);     // Bind the VAO

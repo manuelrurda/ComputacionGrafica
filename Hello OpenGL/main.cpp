@@ -120,22 +120,76 @@ void CrearLetrasyFiguras()
     MeshColor* triangulorojo = new MeshColor();
     triangulorojo->CreateMeshColor(vertices_triangulorojo, 18);
     meshColorList.push_back(triangulorojo);
+    
+    GLfloat vertices_trianguloazul[] = {
+        //X            Y            Z            R        G        B
+        -1.0f,    -1.0f,        0.5f,            0.0f,    0.0f,    1.0f,
+        1.0f,    -1.0f,        0.5f,            0.0f,    0.0f,    1.0f,
+        0.0f,    1.0f,        0.5f,            0.0f,    0.0f,    1.0f,
+        
+    };
 
+    MeshColor* trianguloazul = new MeshColor();
+    trianguloazul->CreateMeshColor(vertices_trianguloazul, 18);
+    meshColorList.push_back(trianguloazul);
+    
+    GLfloat vertices_trianguloverde[] = {
+        //X            Y            Z            R        G        B
+        -0.6f,    -1.0f,        0.5f,            0.0f,    0.5f,    0.0f,
+        0.6f,    -1.0f,        0.5f,            0.0f,    0.5f,    0.0f,
+        0.0f,    1.0f,        0.5f,            0.0f,    0.5f,    0.0f,
+        
+    };
+
+    MeshColor* trianguloverde = new MeshColor();
+    trianguloverde->CreateMeshColor(vertices_trianguloverde, 18);
+    meshColorList.push_back(trianguloverde);
+
+    GLfloat vertices_cuadradorojo[] = {
+        //X            Y            Z            R        G        B
+        -0.5f,    -0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+        0.5f,    -0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+        0.5f,    0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+        -0.5f,    -0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+        0.5f,    0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+        -0.5f,    0.7f,        0.5f,            1.0f,    0.0f,    0.0f,
+
+    };
+
+    MeshColor* cuadradorojo = new MeshColor();
+    cuadradorojo->CreateMeshColor(vertices_cuadradorojo, 36);
+    meshColorList.push_back(cuadradorojo);
+    
     GLfloat vertices_cuadradoverde[] = {
         //X            Y            Z            R        G        B
-        -0.5f,    -0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
-        0.5f,    -0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
-        0.5f,    0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
-        -0.5f,    -0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
-        0.5f,    0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
-        -0.5f,    0.5f,        0.5f,            0.0f,    1.0f,    0.0f,
+        -0.5f,    -0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
+        0.5f,    -0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
+        0.5f,    0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
+        -0.5f,    -0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
+        0.5f,    0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
+        -0.5f,    0.6f,        0.5f,            0.0f,    1.0f,    0.0f,
 
     };
 
     MeshColor* cuadradoverde = new MeshColor();
     cuadradoverde->CreateMeshColor(vertices_cuadradoverde, 36);
     meshColorList.push_back(cuadradoverde);
+    
 
+    GLfloat vertices_cuadradocafe[] = {
+        //X            Y            Z            R        G        B
+        -0.5f,    -0.5f,        0.5f,           0.478f, 0.255f, 0.067f,
+        0.5f,    -0.5f,        0.5f,            0.478f, 0.255f, 0.067f,
+        0.5f,    0.5f,        0.5f,             0.478f, 0.255f, 0.067f,
+        -0.5f,    -0.5f,        0.5f,           0.478f, 0.255f, 0.067f,
+        0.5f,    0.5f,        0.5f,             0.478f, 0.255f, 0.067f,
+        -0.5f,    0.5f,        0.5f,            0.478f, 0.255f, 0.067f
+
+    };
+
+    MeshColor* cuadradocafe = new MeshColor();
+    cuadradocafe->CreateMeshColor(vertices_cuadradocafe, 36);
+    meshColorList.push_back(cuadradocafe);
 
 }
 
@@ -165,8 +219,8 @@ int main()
     GLuint uniformProjection = 0;
     GLuint uniformModel = 0;
     //Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
-    glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
-    //glm::mat4 projection = glm::perspective(glm::radians(60.0f)    ,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
+    glm::mat4 projection = glm::ortho(-3.0f, 3.0f, -3.0f, 3.0f, 0.1f, 100.0f);
+//    glm::mat4 projection = glm::perspective(glm::radians(60.0f)    ,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
     
     //Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
     glm::mat4 model(1.0); //fuera del while se usa para inicializar la matriz con una identidad
@@ -186,25 +240,102 @@ int main()
         uniformModel = shaderList[1].getModelLocation();
         uniformProjection = shaderList[1].getProjectLocation();
         
+        
         //Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+        
+        // Dibujar cuadrados rojos
+        
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f));
-        //
+        model = glm::translate(model, glm::vec3(0.0f, -1.4f, -4.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[4]->RenderMeshColor();
+        
+        // Dibujar cuadrados verdes
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.5f, -1.0f, -2.0f));
+        model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshColorList[0]->RenderMeshColor();
-
-        //Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
-        shaderList[0].useShader();
-        uniformModel = shaderList[0].getModelLocation();
-        uniformProjection = shaderList[0].getProjectLocation();
-        angulo += 0.01;
-        //Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+        meshColorList[5]->RenderMeshColor();
+        
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        model = glm::translate(model, glm::vec3(0.5f, -1.0f, -2.0f));
+        model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[1]->RenderMesh();
+        meshColorList[5]->RenderMeshColor();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, -2.3f, -2.0f));
+        model = glm::scale(model, glm::vec3(0.7f, 0.84f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[5]->RenderMeshColor();
+        
+        // Dibujar triangulo azul
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, 0.8f, -2.0f));
+        model = glm::scale(model, glm::vec3(1.3f, 0.84f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[2]->RenderMeshColor();
+        
+        // Dibujar Arboles
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(2.0f, -1.4f, -2.0f));
+        model = glm::scale(model, glm::vec3(0.7f, 0.6f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[3]->RenderMeshColor();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(2.0f, -2.3f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.35f, 1.0f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[6]->RenderMeshColor();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-2.0f, -1.4f, -2.0f));
+        model = glm::scale(model, glm::vec3(0.7f, 0.6f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[3]->RenderMeshColor();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-2.0f, -2.3f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.35f, 1.0f, 0.7f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshColorList[6]->RenderMeshColor();
+        
+
+//        //Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
+//        shaderList[0].useShader();
+//        uniformModel = shaderList[0].getModelLocation();
+//        uniformProjection = shaderList[0].getProjectLocation();
+//        angulo += .5;
+//        //Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, -0.5f, -3.0f));
+//        model = glm::rotate(model, glm::radians(angulo), glm::vec3(0.0f, 1.0f, 0.0f));
+//        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+//
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[1]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, 1.0f, -3.0f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        meshList[0]->RenderMesh();
 
         glUseProgram(0);
         mainWindow.swapBuffers();
