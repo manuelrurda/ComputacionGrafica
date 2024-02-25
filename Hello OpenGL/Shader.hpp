@@ -19,10 +19,11 @@ public:
 
     void useShader();
     void ClearShader();
+    void setColor(GLfloat* colorRGB);
     ~Shader();
 
 private:
-    GLuint shaderID, uniformProjection, uniformModel;     //Ir agregando nuevas variables Uniform
+    GLuint shaderID, uniformProjection, uniformModel, uniformColor;     //Ir agregando nuevas variables Uniform
     void CompileShader(const char* vertexCode, const char* fragmentCode);
     void AddShader(GLuint theProgram, const char* ShaderCode, GLenum shaderType);
 };

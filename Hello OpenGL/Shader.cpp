@@ -89,6 +89,7 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
     
     uniformModel = glGetUniformLocation(shaderID, "model");
     uniformProjection = glGetUniformLocation(shaderID, "projection");
+    uniformColor = glGetUniformLocation(shaderID, "color");
     //Ir agregando nuevas variables Uniform
 }
 
@@ -108,6 +109,11 @@ void Shader::useShader()
 
 }
 
+void Shader::setColor(GLfloat* colorRGB){
+    
+    glUniform3fv(uniformColor, 1, colorRGB);
+}
+
 void Shader::ClearShader()
 {
     if (!shaderID)
@@ -117,6 +123,7 @@ void Shader::ClearShader()
     }
     uniformModel = 0;
     uniformProjection = 0;
+    uniformColor = 0;
     //Ir agregando nuevas variables Uniform para limpiar
 }
 void Shader:: AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType) //Función para agregar los shaders a la tarjeta gráfica
