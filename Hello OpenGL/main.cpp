@@ -119,6 +119,48 @@ void CrearLetrasyFiguras()
     letras->CreateMeshColor(vertices_letras,78);
     meshColorList.push_back(letras);
 
+    // Letra M
+    GLfloat vertices_M[] = {
+        // X       Y       Z       R     G     B
+        -0.9f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Punto inferior izquierdo
+        -0.9f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Pico superior izquierdo
+        -0.5f,  0.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Valle medio
+        -0.1f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Pico superior derecho
+        -0.1f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f  // Punto inferior derecho
+    };
+    
+    MeshColor *letra_M = new MeshColor();
+    letras->CreateMeshColor(vertices_M,30);
+    meshColorList.push_back(letra_M);
+
+    // Letra R
+    GLfloat vertices_R[] = {
+        // X       Y       Z       R     G     B
+        -0.5f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Punto inferior izquierdo
+        -0.5f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Pico superior izquierdo
+         0.0f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f, // Parte superior derecha de la curva
+         0.0f,  0.5f, 0.5f, 0.0f, 0.0f, 1.0f, // Parte inferior derecha de la curva
+        -0.5f,  0.5f, 0.5f, 0.0f, 0.0f, 1.0f, // Punto de conexión de la pierna
+         0.2f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f  // Final de la pierna derecha
+    };
+    
+    MeshColor *letra_R = new MeshColor();
+    letras->CreateMeshColor(vertices_R,36);
+    meshColorList.push_back(letra_R);
+    
+    // Letra U
+    GLfloat vertices_U[] = {
+        // X       Y       Z       R     G     B
+        0.1f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f,  // Punto superior izquierdo
+        0.1f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f,  // Punto inferior izquierdo
+        0.4f, -1.0f, 0.5f, 0.0f, 0.0f, 1.0f,  // Punto inferior derecho
+        0.4f,  1.0f, 0.5f, 0.0f, 0.0f, 1.0f   // Punto superior derecho
+    };
+    
+    MeshColor *letra_U = new MeshColor();
+    letras->CreateMeshColor(vertices_U,24);
+    meshColorList.push_back(letra_U);
+    
     GLfloat vertices_triangulorojo[] = {
         //X            Y            Z            R        G        B
         -1.0f,    -1.0f,        0.5f,            1.0f,    0.0f,    0.0f,
@@ -126,6 +168,7 @@ void CrearLetrasyFiguras()
         0.0f,    1.0f,        0.5f,            1.0f,    0.0f,    0.0f,
         
     };
+    
 
     MeshColor* triangulorojo = new MeshColor();
     triangulorojo->CreateMeshColor(vertices_triangulorojo, 18);
@@ -229,8 +272,8 @@ int main()
     GLuint uniformProjection = 0;
     GLuint uniformModel = 0;
     //Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
-//    glm::mat4 projection = glm::ortho(-3.0f, 3.0f, -3.0f, 3.0f, 0.1f, 100.0f);
-    glm::mat4 projection = glm::perspective(glm::radians(60.0f)    ,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
+    glm::mat4 projection = glm::ortho(-3.0f, 3.0f, -3.0f, 3.0f, 0.1f, 100.0f);
+//    glm::mat4 projection = glm::perspective(glm::radians(60.0f)    ,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
     
     //Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
     glm::mat4 model(1.0); //fuera del while se usa para inicializar la matriz con una identidad
@@ -252,6 +295,15 @@ int main()
         
         
         //Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+        
+        // Dibujar letras
+
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-0.0f, -0.0f, -2.0f));
+//        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshColorList[1]->RenderMeshColor();
         
         // Dibujar cuadrados rojos
         
@@ -350,7 +402,7 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         // Ventanas
         GLfloat green[3] = {0.0f, 1.0f, 0.0f};
         shaderList[0].setColor(green);
@@ -360,14 +412,14 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         model = glm::mat4(1.0);
         model = glm::translate(model, glm::vec3(0.25f, -0.3f, -2.5f));
         model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         //Puerta
         model = glm::mat4(1.0);
         model = glm::translate(model, glm::vec3(0.0f, -0.85f, -2.5f));
@@ -375,7 +427,7 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         //Techo
         GLfloat blue[3] = {0.0f, 0.0f, 1.0f};
         shaderList[0].setColor(blue);
@@ -385,7 +437,7 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[0]->RenderMesh();
-        
+
         //Arboles
         //Troncos
         GLfloat brown[3] = {0.478, 0.255, 0.067};
@@ -396,14 +448,14 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         model = glm::mat4(1.0);
         model = glm::translate(model, glm::vec3(-1.7f, -1.0f, -3.2f));
         model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[1]->RenderMesh();
-        
+
         //Hojas
         GLfloat darkGreen[3] = {0.05, 0.425, 0.16};
         shaderList[0].setColor(darkGreen);
@@ -413,7 +465,7 @@ int main()
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
         meshList[0]->RenderMesh();
-        
+
         model = glm::mat4(1.0);
         model = glm::translate(model, glm::vec3(-1.7f, -0.2f, -3.2f));
         model = glm::scale(model, glm::vec3(0.5f, 1.0f, 0.5f));
