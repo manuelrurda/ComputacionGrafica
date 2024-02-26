@@ -292,7 +292,7 @@ int main()
 
     CrearCubo();//Ìndice 0 en MeshList
     CrearPiramideTriangular();//Ìndice 1 en MeshList
-    CrearCilindro(5, 1.0f);//Ìndice 2 en MeshList
+    CrearCilindro(20, 1.0f);//Ìndice 2 en MeshList
     CrearCono(25, 2.0f);//Ìndice 3 en MeshList
     CrearPiramideCuadrangular();//Ìndice 4 en MeshList
     CreateShaders();
@@ -365,9 +365,102 @@ int main()
         glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
         color = glm::vec3(1.0f, 0.0f, 1.0f);
         glUniform3fv(uniformColor, 1, glm::value_ptr(color)); //para cambiar el color del objetos
-        meshList[0]->RenderMesh(); //dibuja cubo y pir·mide triangular
-        //meshList[3]->RenderMeshGeometry(); //dibuja las figuras geomÈtricas cilindro, cono, pir·mide base cuadrangular
-        //sp.render(); //dibuja esfera
+//        meshList[2]->RenderMesh(); //dibuja cubo y pir·mide triangular
+//        meshList[2]->RenderMeshGeometry(); //dibuja las figuras geomÈtricas cilindro, cono, pir·mide base cuadrangular
+//        sp.render(); //dibuja esfera
+        
+        
+        // Ejercicio de clase, casa
+        // Cuerpo de la Casa
+        color = glm::vec3(1.0f, 0.0f, 0.0f);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, -0.5f, -3.0f));
+        model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        // Ventanas
+        color = glm::vec3(0.0f, 1.0f, 0.0f);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.25f, -0.3f, -2.5f));
+        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.25f, -0.3f, -2.5f));
+        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        //Puerta
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, -0.87f, -2.5f));
+        model = glm::scale(model, glm::vec3(0.4f, 0.55f, 0.1f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        //Techo
+        color = glm::vec3(0.0f, 0.0f, 1.0f);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, 0.63f, -3.0f));
+        model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[4]->RenderMesh();
+        
+        //Ventana Trasera
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, -0.4f, -3.38f));
+        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+        model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[2]->RenderMeshGeometry();
+        
+        //Arboles
+        //Troncos
+        color = glm::vec3(0.478, 0.255, 0.067);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(1.7f, -0.9f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.7f, -0.9f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[0]->RenderMesh();
+        
+        //Hojas
+        color = glm::vec3(0.05, 0.425, 0.16);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(1.7f, -0.2f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.5f, 1.0f, 0.5f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[4]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.7f, -0.2f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.5f, 1.0f, 0.5f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[4]->RenderMesh();
+        
+        
         
         
         /*

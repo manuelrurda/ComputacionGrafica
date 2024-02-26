@@ -20,15 +20,23 @@
 		8CA9DBEE2B8C4DE200C442EE /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9DBE42B8C4DE100C442EE /* Window.cpp */; };
 		8CA9DBEF2B8C4DE200C442EE /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9DBE62B8C4DE100C442EE /* Mesh.cpp */; };
 		8CA9DBF02B8C4DE200C442EE /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CA9DBE92B8C4DE100C442EE /* Shader.cpp */; };
+		8CA9DBF12B8CE9B300C442EE /* shadercolor.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CA9DBD82B8C4DB600C442EE /* shadercolor.frag */; };
+		8CA9DBF22B8CE9B300C442EE /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CA9DBD92B8C4DB600C442EE /* shader.vert */; };
+		8CA9DBF32B8CE9B300C442EE /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CA9DBDA2B8C4DB600C442EE /* shader.frag */; };
+		8CA9DBF42B8CE9B300C442EE /* shadercolor.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8CA9DBDB2B8C4DB600C442EE /* shadercolor.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8C7DD7D22B6B285300820978 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 7;
 			files = (
+				8CA9DBF12B8CE9B300C442EE /* shadercolor.frag in CopyFiles */,
+				8CA9DBF22B8CE9B300C442EE /* shader.vert in CopyFiles */,
+				8CA9DBF32B8CE9B300C442EE /* shader.frag in CopyFiles */,
+				8CA9DBF42B8CE9B300C442EE /* shadercolor.vert in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
