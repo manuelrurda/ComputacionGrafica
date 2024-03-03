@@ -85,6 +85,8 @@ void CrearCubo()
 // Pir·mide triangular regular
 void CrearPiramideTriangular()
 {
+    GLfloat val = -sqrt(0.75);
+    
     unsigned int indices_piramide_triangular[] = {
             0,1,2,
             1,3,2,
@@ -96,7 +98,7 @@ void CrearPiramideTriangular()
         -0.5f, -0.5f,0.0f,    //0
         0.5f,-0.5f,0.0f,    //1
         0.0f,0.5f, -0.25f,    //2
-        0.0f,-0.5f,-0.5f,    //3
+        0.0f,-0.5f, val, //3
 
     };
     Mesh* obj1 = new Mesh();
@@ -342,7 +344,7 @@ int main()
         camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
 
         //Limpiar la ventana
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Se agrega limpiar el buffer de profundidad
         shaderList[0].useShader();
         uniformModel = shaderList[0].getModelLocation();
@@ -372,147 +374,430 @@ int main()
         
         // Ejercicio de clase, casa
         // Cuerpo de la Casa
+//        color = glm::vec3(1.0f, 0.0f, 0.0f);
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, -0.5f, -3.0f));
+//        model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.3f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        // Ventanas
+//        color = glm::vec3(0.0f, 1.0f, 0.0f);
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-0.25f, -0.3f, -2.35f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.25f, -0.3f, -2.35f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-0.455f, -0.3f, -2.7f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-0.455f, -0.3f, -3.3f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.455f, -0.3f, -2.7f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.455f, -0.3f, -3.3f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        //Puerta
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, -0.87f, -2.37f));
+//        model = glm::scale(model, glm::vec3(0.4f, 0.55f, 0.1f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        //Techo
+//        color = glm::vec3(0.0f, 0.0f, 1.0f);
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, 0.63f, -3.0f));
+//        model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[4]->RenderMesh();
+//
+//        //Ventana Trasera
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(0.0f, -0.4f, -3.55f));
+//        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+//        model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[2]->RenderMeshGeometry();
+//
+//        //Arboles
+//        //Troncos
+//        color = glm::vec3(0.478, 0.255, 0.067);
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(1.7f, -0.9f, -3.0f));
+//        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-1.7f, -0.9f, -3.0f));
+//        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+//
+//        //Hojas
+//        color = glm::vec3(0.05, 0.425, 0.16);
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(1.7f, -0.4f, -3.0f));
+//        model = glm::scale(model, glm::vec3(0.5f, 0.7f, 0.5f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[4]->RenderMesh();
+//
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-1.7f, -0.4f, -3.0f));
+//        model = glm::scale(model, glm::vec3(0.5f, 0.7f, 0.5f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[4]->RenderMesh();
+//
+//        //Piso
+//        color = glm::vec3(0.8, 0.8, 0.8 );
+//        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+//        model = glm::mat4(1.0);
+//        model = glm::translate(model, glm::vec3(-0.5f, -1.2f, -3.0f));
+//        model = glm::scale(model, glm::vec3(7.0f, 0.1f, 7.0f));
+//        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+//        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+//        meshList[0]->RenderMesh();
+        
+
+        // Pyraminx
+        color = glm::vec3(0.0f, 0.0f, 0.0f);
+        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.5f, -0.5f, -3.0f));
+        model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        //Rojo
         color = glm::vec3(1.0f, 0.0f, 0.0f);
         glUniform3fv(uniformColor, 1, glm::value_ptr(color));
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, -0.5f, -3.0f));
-        model = glm::scale(model, glm::vec3(1.2f, 1.3f, 1.3f));
+        model = glm::translate(model, glm::vec3(-0.5f, 0.35f, -3.47f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
-        
-        // Ventanas
-        color = glm::vec3(0.0f, 1.0f, 0.0f);
-        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-        model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-0.25f, -0.3f, -2.35f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.25f, -0.3f, -2.35f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.1f));
+        model = glm::translate(model, glm::vec3(-0.94f, -0.55f, -3.25f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-0.455f, -0.3f, -2.7f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::translate(model, glm::vec3(-0.5f, -0.45f, -3.25f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-0.455f, -0.3f, -3.3f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::translate(model, glm::vec3(-0.06f, -0.55f, -3.25f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.455f, -0.3f, -2.7f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::translate(model, glm::vec3(-1.37f, -1.45f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.455f, -0.3f, -3.3f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::translate(model, glm::vec3(-0.5f, -1.45f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        //Puerta
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, -0.87f, -2.37f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.55f, 0.1f));
+        model = glm::translate(model, glm::vec3(0.37f, -1.45f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        //Techo
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.94f, -1.35f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.055f, -1.35f, -3.0f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::rotate(model, 30 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        //Azul
+        
         color = glm::vec3(0.0f, 0.0f, 1.0f);
         glUniform3fv(uniformColor, 1, glm::value_ptr(color));
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, 0.63f, -3.0f));
-        model = glm::scale(model, glm::vec3(1.5f, 1.0f, 1.5f));
+        model = glm::translate(model, glm::vec3(-0.56f, 0.35f, -3.61f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[4]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        //Ventana Trasera
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(0.0f, -0.4f, -3.55f));
-        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-        model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(-0.57f, -0.55, -4.15f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[2]->RenderMeshGeometry();
+        meshList[1]->RenderMesh();
         
-        //Arboles
-        //Troncos
-        color = glm::vec3(0.478, 0.255, 0.067);
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.03f, -0.55, -3.4f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.7f, -0.50, -3.7f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.45f, -1.45f, -3.2f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.0f, -1.45f, -3.95f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.6f, -1.45f, -4.7f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.7f, -1.45f, -4.25f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.1f, -1.45f, -3.50f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        // Verde
+        color = glm::vec3(0.0f, 1.0f, 0.0f);
         glUniform3fv(uniformColor, 1, glm::value_ptr(color));
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(1.7f, -0.9f, -3.0f));
-        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+        model = glm::translate(model, glm::vec3(-0.44f, 0.35f, -3.61f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-1.7f, -0.9f, -3.0f));
-        model = glm::scale(model, glm::vec3(0.2f, 0.7f, 0.2));
+        model = glm::translate(model, glm::vec3(-0.43f, -0.55, -4.15f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        //Hojas
-        color = glm::vec3(0.05, 0.425, 0.16);
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.03f, -0.55, -3.4f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.3f, -0.50, -3.7f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.45f, -1.45f, -3.2f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.0f, -1.45f, -3.95f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.4f, -1.45f, -4.7f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.3f, -1.45f, -4.25f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.1f, -1.45f, -3.50f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        // Amarillo
+        color = glm::vec3(1.0f, 1.0f, 0.0f);
         glUniform3fv(uniformColor, 1, glm::value_ptr(color));
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(1.7f, -0.4f, -3.0f));
-        model = glm::scale(model, glm::vec3(0.5f, 0.7f, 0.5f));
+        model = glm::translate(model, glm::vec3(-0.5f, -1.63f, -4.7f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[4]->RenderMesh();
+        meshList[1]->RenderMesh();
         
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-1.7f, -0.4f, -3.0f));
-        model = glm::scale(model, glm::vec3(0.5f, 0.7f, 0.5f));
+        model = glm::translate(model, glm::vec3(-0.05f, -1.63f, -3.9f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[4]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        //Piso
-        color = glm::vec3(0.8, 0.8, 0.8 );
-        glUniform3fv(uniformColor, 1, glm::value_ptr(color));
         model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-0.5f, -1.2f, -3.0f));
-        model = glm::scale(model, glm::vec3(7.0f, 0.1f, 7.0f));
+        model = glm::translate(model, glm::vec3(-0.95f, -1.63f, -3.9f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        meshList[0]->RenderMesh();
+        meshList[1]->RenderMesh();
         
-        
-        
-        /*
-        //ejercicio: Instanciar primitivas geomÈtricas para recrear el dibujo de la pr·ctica pasada en 3D,
-        //se requiere que exista piso y la casa tiene una ventana azul circular justo en medio de la pared trasera y solo 1 puerta frontal.
-        model = glm::mat4(1.0f);
-        color=glm::vec3(0.0f,1.0f,0.0f);
-        //Opcional duplicar esta traslaciÛn inicial para posicionar en -Z a los objetos en el mismo punto
-        //model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-        model = glm::translate(model, glm::vec3(0.0f, 0.75f, -2.5f));
-        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 1.0f));
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.5f, -1.63f, -4.65f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-        meshList[1]->RenderMeshGeometry();
-        */
-
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.4f, -1.63f, -3.1f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.5f, -1.63f, -3.1f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.4f, -1.63f, -3.1f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(0.4f, -1.63f, -3.1f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.05f, -1.63f, -3.85f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-0.95f, -1.63f, -3.85f));
+        model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
+        model = glm::rotate(model, 180 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+        meshList[1]->RenderMesh();
+        
         glUseProgram(0);
         mainWindow.swapBuffers();
     }
